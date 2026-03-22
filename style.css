@@ -1,0 +1,178 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+    scroll-behavior: smooth;
+}
+
+:root {
+    --primary-green: #e8f5e9;
+    --dark-green: #2e7d32;
+    --hover-green: #a5d6a7;
+    --white: #ffffff;
+}
+
+/* Fixed Duyuru Bandı */
+.fixed-banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--dark-green);
+    color: white;
+    text-align: center;
+    padding: 10px;
+    z-index: 2000;
+    font-size: 0.9rem;
+}
+
+.fixed-banner a { color: var(--hover-green); text-decoration: none; font-weight: bold; }
+
+/* Header */
+header {
+    background-color: var(--white);
+    padding: 1rem 5%;
+    position: fixed;
+    top: 40px;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.logo { font-size: 1.5rem; font-weight: bold; color: var(--dark-green); }
+
+.nav-links { display: flex; list-style: none; }
+.nav-links li { margin-left: 20px; }
+.nav-links a { text-decoration: none; color: #333; font-weight: 500; transition: 0.3s; }
+.nav-links a:hover { color: var(--dark-green); }
+
+/* Sections */
+section {
+    padding: 150px 10% 80px;
+    min-height: 100vh;
+}
+
+.hero {
+    background: linear-gradient(rgba(231, 245, 233, 0.5), rgba(232, 245, 233, 0.9)), 
+                url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+    background-size: cover;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero h1 { font-size: 3.5rem; color: var(--dark-green); margin-bottom: 20px; }
+
+.btn {
+    display: inline-block;
+    padding: 15px 35px;
+    background-color: var(--dark-green);
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--dark-green);
+    margin-bottom: 50px;
+}
+
+/* Kitap Kartları */
+.book-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+}
+
+.book-card {
+    background: var(--primary-green);
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    transition: 0.4s;
+}
+
+/* İSTEDİĞİN YEŞİL HOVER */
+.book-card:hover {
+    background-color: var(--hover-green);
+    transform: translateY(-10px);
+}
+
+.book-img {
+    width: 320px;
+    height: 480px;
+    object-fit: cover; /* Resim yamulmasın diye önemli */
+    display: block;
+    margin: 0 auto; /* Kitabı ortalar */
+}
+
+.book-img img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.bg-light { background-color: #f1f8f1; }
+
+/* Footer */
+footer {
+    background: var(--dark-green);
+    color: white;
+    text-align: center;
+    padding: 30px;
+}
+
+/* Hamburger (Mobil) */
+.hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+.hamburger div { width: 25px; height: 3px; background-color: var(--dark-green); }
+
+@media (max-width: 768px) {
+    .hamburger { display: flex; }
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: white;
+        padding: 20px;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    }
+    .nav-links.active { display: flex; }
+    .nav-links li { margin: 10px 0; }
+}
+
+
+
+.book-grid {
+    display: grid;
+    /* 1fr 1fr sayesinde her zaman 2 eşit sütun olur */
+    grid-template-columns: 1fr 1fr; 
+    /* gap hem yatay hem dikeyde 40px boşluk bırakır */
+    gap: 40px; 
+}
+.book-img {
+    width: 100%; /* Sabit 320px yerine %100 yap */
+    max-width: 320px; /* En fazla 320px olsun ama gerekirse küçülsün */
+    height: auto; /* Orantıyı koruması için */
+    display: block;
+    margin: 0 auto 15px; /* Altına biraz boşluk (15px) ekledik */
+}
+
+.book-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
